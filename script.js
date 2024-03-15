@@ -1,73 +1,74 @@
-//prendo il bottone dall'html
+/*EXPLANATION
+12) get btn element from html;
+13) add eventlistener on click;
+14) declaration + assignation of array that contains two elements: datum1 refers to numSquares, datum2 refers to widthClass; as chooseLevel() returns an array with two elements, I assign datum1 to the first returned value, datum2 to the second returned value; 
+15) call squareWrapperGen function, using datum1 and datum2 (the two elements that are contained within the array returned from chooseLevel()) as parameters;
+16) declaration of box variable + assignation to the element got from html (from the html the squareWrapperGen() has previously injected into html) by class .square;
+17) add eventListener to each box;
+18) at click, toggle 'clicked' class to/from classList;
+19) print the content of html of the box clicked;
+*/
+
 const btn = document.getElementById('btn-start');
-
-//aggiungo event listener al bottone
 btn.addEventListener('click',function(){
-    const squareWrapper = document.createElement('div');
-    squareWrapper.className = 'd-flex flex-wrap align-items-start align-content-start debug';
-    squareWrapper.setAttribute('id','board');
-
-    let tempHtml = '';
-
-    for(let i = 0; i < 100; i++){
-        //nella scatola inserisco la stringa con i valori derivanti dal ciclo SENZA SOVRASCRIVERE: la aggiungo. Così ho tutti i div, da 1 a 100.
-        tempHtml += `
-        <div class="square debug2">
-                ${i + 1}
-        </div>
-        `
-        console.log('tempHtml: ', tempHtml);
-    };
-
-    squareWrapper.innerHTML = tempHtml;
-
-    document.querySelector('main').append(squareWrapper);
+    const [datum1, datum2] = chooseLevel()
+    squareWrapperGen(datum1, datum2);
+    const box = document.querySelectorAll(".square");
+    box.forEach(box => {
+    box.addEventListener('click',function(){
+        box.classList.toggle('clicked');
+        console.log(box.innerHTML);
+        });
+    });
 });
-/*
-//creo elemento square
-// const square = document.createElement('div');
 
-//creo contenitore di tutti gli square
-const squareWrapper = document.createElement('div');
-squareWrapper.className = 'd-flex flex-wrap align-items-start align-content-start debug';
-squareWrapper.setAttribute('id','board');
-
-//scatola in cui inserire stringa generata da ciclo, senza inserirlo subito in pagina html --> se no, ricaricherebbe ogni volta la pagina
-let tempHtml = '';
-
-for(let i = 0; i < 100; i++){
-    //nella scatola inserisco la stringa con i valori derivanti dal ciclo SENZA SOVRASCRIVERE: la aggiungo. Così ho tutti i div, da 1 a 100.
-    tempHtml += `
-    <div class="square debug2">
-            ${i + 1}
-    </div>
-    `
-    console.log('tempHtml: ', tempHtml);
-};
-
-//inserisco la scatola con i div nella scatola che poi inserisco in html
-squareWrapper.innerHTML = tempHtml;
-//seleziono il container in html in cui inserire la scatola squareWrapper
-//inserisco scatola in html
-document.querySelector('main').append(squareWrapper);
-
-/*
-//ciclo for per generare gli square
-for (i = 0; i < 100; i++){
-    const square = document.createElement('div');
-    square.innerHTML = 
-    `<span> 
-    ${i} 
-    </span>`;
-    console.log(square);
-};
+/*EXPLANATION FUNCTION
+35) declaration fuction squareWrapperGen with two parameters;
+36) get element from html assigned to squareWrapper variable; 
+37) add class to the squareWrapper;
+38) declaration of tempHtml: in which "park" all the squares the the following for cycle would create;
+39) for cycle to create as many squares as numSquares parameter tells;
+40) how to create square? Write into tempHtml "parking/container" a div with classes (dynamic classes for widthClass parameter and the text, that is the index + 1 as I want numbers starting from 1 and not 0) and adding this string to the tempHtml "container" at every cycle;
+46) push tempHtml into squareWrapper: so there is only one element to be pushed into html (and not every div/square once at time);
 */
 
-/*COSA VOGLIO FARE: 
-- generare un elemento
-- assegnare classi ad elemento, per renderlo una cella
-- inserire elemento in scatola
-- inserire scatola in html
+function squareWrapperGen(numSquares, widthClass){
+    const squareWrapper = document.querySelector('section');
+    squareWrapper.className = 'd-flex flex-wrap'
+    let tempHtml = '';
+    for(i = 0; i < numSquares; i++){
+        tempHtml += `
+            <div class="square ${widthClass} d-flex justify-content-center align-items-center">
+                    ${i + 1}
+            </div>
+            `
+    }
+    squareWrapper.innerHTML = tempHtml;
+};
 
-
+/*
+57) declaration of fuction chooseLevel;
+58) declaration of two variables (that serve as elements of the array this function returns; in order to use them as parameter into other functions);
+59) declaration variable levelSelected + assignation: got value from select input tag from html;
+61-63) assignation of values to variables depending on levelSelected value;
+64) return --> array/object with the two elements I'll use as parameters in other function;
 */
+
+function chooseLevel(){
+    let numSquares, widthClass;
+    const levelSelected = document.getElementById("level").value;
+    //console.log(levelSelected, typeof levelSelected);
+    if(levelSelected === 'easy'){
+        numSquares = 100;
+        widthClass = 'db-width-easy';
+        return [numSquares, widthClass];
+    } else if (levelSelected.toLowerCase() == 'medium'){
+        numSquares = 81;
+        widthClass = 'db-width-medium';
+        return [numSquares, widthClass];
+    } else if (levelSelected.toLowerCase() == 'hard'){
+        numSquares = 49;
+        widthClass = 'db-width-hard';
+        return [numSquares, widthClass];
+    }
+}

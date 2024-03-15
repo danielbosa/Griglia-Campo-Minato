@@ -1,9 +1,6 @@
-.debug{
-    border: 2px solid red;
-}
-
-.debug2{
-    border: 2px solid green;
+body{
+    font-family: "Montserrat";
+    background-color:  #011627;
 }
 
 header{
@@ -12,18 +9,32 @@ header{
     height: 80px;
 }
 
-main{
-    height: calc(100vh - 80px);
-    aspect-ratio: 1 / 1;
-    /* overflow: hidden; */
-}
-
+/* Section */
 .db-container{
-    width: 60%;
-    margin: auto;
+    height: calc(100vh - 100px);
+    aspect-ratio: 1 / 1;
+    margin: 10px auto;
+    color: white;
 }
 
+/* Square classes */
 .square{
-    width: calc(100% / 10);
     aspect-ratio: 1 / 1;
+    border: 1px solid greenyellow;
+}
+
+.db-width-easy{
+    width: calc(100% / 10);
+}
+
+.db-width-medium{
+    width: calc(100% / 9);
+}
+
+.db-width-hard{
+    width: calc(100% / 7);
+}
+
+.clicked{
+    background-color: red;
 }
