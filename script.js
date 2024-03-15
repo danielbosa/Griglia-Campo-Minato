@@ -46,7 +46,7 @@ function squareWrapperGen(numSquares, widthClass){
     squareWrapper.innerHTML = tempHtml;
 };
 
-/*
+/*EXPLANATION FUNCTION
 57) declaration of fuction chooseLevel;
 58) declaration of two variables (that serve as elements of the array this function returns; in order to use them as parameter into other functions);
 59) declaration variable levelSelected + assignation: got value from select input tag from html;
