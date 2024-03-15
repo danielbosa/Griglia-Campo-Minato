@@ -1,0 +1,29 @@
+.debug{
+    border: 2px solid red;
+}
+
+.debug2{
+    border: 2px solid green;
+}
+
+header{
+    background-color: white;
+    color: black;
+    height: 80px;
+}
+
+main{
+    height: calc(100vh - 80px);
+    aspect-ratio: 1 / 1;
+    /* overflow: hidden; */
+}
+
+.db-container{
+    width: 60%;
+    margin: auto;
+}
+
+.square{
+    width: calc(100% / 10);
+    aspect-ratio: 1 / 1;
+}
