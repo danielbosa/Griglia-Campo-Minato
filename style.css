@@ -1,21 +1,35 @@
 body{
     font-family: "Sora", "Montserrat";
-    background-color:  #011627;
+    background-color:  black;
 }
 
 /* Header */
 header{
     background-color: white;
     color: black;
-    height: 80px;
+    padding-top: 5px;
+    height: 75px;
 }
 
 header div{
-    width: 350px;
+    width: 25%;
 }
 
 header div img{
     width: 100px
+}
+
+.db-btn{
+    margin-left: 5px;
+    padding: 6px 12px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+
+.db-btn:hover{
+    background-color:  #4d5b66;
+    color: #011627;
 }
 
 /* Section */
@@ -23,13 +37,22 @@ header div img{
     height: calc(100vh - 100px);
     aspect-ratio: 1 / 1;
     margin: 10px auto;
-    color: white;
+    background-color:  black;
+}
+
+.db-square-wrapper{
+    background-image: url(https://www.1001hobbies.it/1739252-large_default/neca-87527-saw-puppet-equitazione-triciclo-suono-12-af.jpg);
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
 }
 
 /* Square classes */
 .square{
     aspect-ratio: 1 / 1;
-    border: 1px solid greenyellow;
+    border: 2px solid #b9ebf6;
+    background-color: black;
+    color: white;
 }
 
 .db-width-easy{
@@ -45,5 +68,6 @@ header div img{
 }
 
 .clicked{
-    background-color: red;
+    background-color: transparent;
+    color: transparent;
 }

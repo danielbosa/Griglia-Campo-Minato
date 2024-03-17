@@ -9,6 +9,10 @@
 19) print the content of html of the box clicked;
 */
 
+
+//console.log(document.styleSheets[i].cssRules);
+
+
 const btn = document.getElementById('btn-start');
 btn.addEventListener('click',function(){
     const [datum1, datum2] = chooseLevel()
@@ -34,7 +38,7 @@ btn.addEventListener('click',function(){
 
 function squareWrapperGen(numSquares, widthClass){
     const squareWrapper = document.querySelector('section');
-    squareWrapper.className = 'd-flex flex-wrap'
+    squareWrapper.className = 'd-flex flex-wrap db-square-wrapper'
     let tempHtml = '';
     for(i = 0; i < numSquares; i++){
         tempHtml += `
