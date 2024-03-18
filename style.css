@@ -53,6 +53,7 @@ header div img{
     border: 2px solid #b9ebf6;
     background-color: black;
     color: white;
+    cursor: crosshair;
 }
 
 .db-width-easy{
