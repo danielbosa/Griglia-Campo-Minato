@@ -9,10 +9,6 @@
 19) print the content of html of the box clicked;
 */
 
-
-//console.log(document.styleSheets[i].cssRules);
-
-
 const btn = document.getElementById('btn-start');
 btn.addEventListener('click',function(){
     const [datum1, datum2] = chooseLevel()
@@ -62,7 +58,7 @@ function chooseLevel(){
     let numSquares, widthClass;
     const levelSelected = document.getElementById("level").value;
     //console.log(levelSelected, typeof levelSelected);
-    if(levelSelected === 'easy'){
+    if(levelSelected.toLowerCase() == 'easy'){
         numSquares = 100;
         widthClass = 'db-width-easy';
         return [numSquares, widthClass];
